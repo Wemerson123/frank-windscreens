@@ -66,14 +66,8 @@
   fbtn.addEventListener('click', function (e) { e.stopPropagation(); setOpen(!fab.classList.contains('open')); });
   document.addEventListener('click', function (e) { if (!fab.contains(e.target)) setOpen(false); });
   document.addEventListener('keydown', function (e) { if (e.key === 'Escape') setOpen(false); });
-  // on the home page it waits until the hero (which has its own quote button) has scrolled away
-  var home = document.body.classList.contains('home');
-  var showFab = function () {
-    var on = !home || scrollY > innerHeight * .6;
-    fab.classList.toggle('on', on);
-    if (!on) setOpen(false);
-  };
-  addEventListener('scroll', showFab, { passive: true }); showFab();
+  // visible on every page; on the home page it slides in once the opening has finished
+  setTimeout(function () { fab.classList.add('on'); }, document.body.classList.contains('home') ? 2600 : 300);
 
   var foot = document.querySelector('[data-foot]');
   if (foot) {
