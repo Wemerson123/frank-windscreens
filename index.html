@@ -1,0 +1,658 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Frank Windscreens &amp; Tint — Windscreens &amp; Window Tinting in Cairns</title>
+<meta name="description" content="Windscreen replacement, stone chip repairs, side windows and window tinting in Cairns. Frank Windscreens & Tint, 209 Bunda Street, Parramatta Park. Call 0431 185 183.">
+<meta name="theme-color" content="#07080a">
+<meta name="robots" content="noindex">
+<link rel="canonical" href="./">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="preload" as="image" href="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20261018_172559_b0014e8c-685a-4848-b845-a91743651e7f.png">
+<link rel="stylesheet" href="assets/site.css">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"AutoRepair","name":"Frank Windscreens & Tint","telephone":"+61431185183",
+ "address":{"@type":"PostalAddress","streetAddress":"209 Bunda Street","addressLocality":"Parramatta Park","addressRegion":"QLD","postalCode":"4870","addressCountry":"AU"},
+ "areaServed":"Cairns","image":"assets/photos/shopfront.webp",
+ "sameAs":["https://www.instagram.com/frank_windscreens_tint/","https://www.facebook.com/share/1Qfio9tNFG/"],
+ "makesOffer":[{"@type":"Offer","itemOffered":{"@type":"Service","name":"Windscreen replacement"}},{"@type":"Offer","itemOffered":{"@type":"Service","name":"Stone chip repair"}},{"@type":"Offer","itemOffered":{"@type":"Service","name":"Window tinting"}},{"@type":"Offer","itemOffered":{"@type":"Service","name":"Side and rear window replacement"}}]}
+</script>
+<script type="importmap">
+{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"}}
+</script>
+<style>
+/* ---------- loader ---------- */
+.loader{position:fixed;inset:0;z-index:100;background:var(--bg);display:grid;place-items:center;transition:opacity .9s var(--ease),visibility .9s var(--ease)}
+.loader.done{opacity:0;visibility:hidden}
+.loader-in{display:flex;flex-direction:column;align-items:center;gap:18px}
+.loader svg{width:42px;height:34px;animation:pulse 1.6s ease-in-out infinite}
+@keyframes pulse{50%{opacity:.35}}
+.loader-bar{width:160px;height:1px;background:var(--line);overflow:hidden}
+.loader-bar i{display:block;height:100%;width:100%;background:#fff;transform:scaleX(0);transform-origin:left;transition:transform .3s}
+.loader-label{font-size:11px;letter-spacing:.22em;color:var(--muted);font-variant-numeric:tabular-nums}
+
+/* ---------- stage ---------- */
+#stage{position:relative;height:420vh}
+.sticky{position:sticky;top:0;height:100vh;height:100svh;overflow:hidden;isolation:isolate}
+.bg{position:absolute;inset:0;background-size:cover;background-position:center}
+.bg1{background-image:url(https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20261018_172559_b0014e8c-685a-4848-b845-a91743651e7f.png)}
+.bg2{background-image:url(https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20261018_172559_28889147-787a-4567-8b27-5de3264916ab.png);opacity:0}
+.wash{position:absolute;inset:0;pointer-events:none;background:
+  radial-gradient(120% 80% at 50% 38%,rgba(7,8,10,0) 40%,rgba(7,8,10,.75) 100%),
+  linear-gradient(to bottom,rgba(7,8,10,.35),rgba(7,8,10,0) 22%,rgba(7,8,10,0) 80%,rgba(7,8,10,.9))}
+.outline{position:absolute;left:50%;top:11%;transform:translateX(-50%);font-family:var(--display);font-size:clamp(84px,27vw,480px);line-height:.86;letter-spacing:.005em;white-space:nowrap;
+  color:transparent;-webkit-text-stroke:1px rgba(255,255,255,.22);
+  -webkit-mask-image:linear-gradient(to bottom,#000 30%,rgba(0,0,0,.15) 95%);mask-image:linear-gradient(to bottom,#000 30%,rgba(0,0,0,.15) 95%);
+  transform-origin:50% 0;pointer-events:none;user-select:none}
+.outline span{display:inline-block;transform:scaleY(1.22);transform-origin:50% 0}
+#gl{position:absolute;inset:0;width:100%;height:100%;z-index:2;display:block}
+.panel{position:absolute;z-index:3}
+.cue{position:absolute;left:50%;bottom:22px;transform:translateX(-50%);z-index:3;display:flex;cursor:pointer;flex-direction:column;align-items:center;gap:10px;font-size:11px;letter-spacing:.2em;color:var(--muted)}
+.cue i{display:block;width:1px;height:34px;background:linear-gradient(#fff,transparent);transform-origin:top;animation:cue 2.2s var(--ease) infinite}
+@keyframes cue{0%{transform:scaleY(0);opacity:1}60%{transform:scaleY(1);opacity:1}100%{transform:scaleY(1);opacity:0}}
+
+/* hero — centred composition, car rising from the floor */
+.glow{position:absolute;inset:0;pointer-events:none;z-index:1;background:
+  radial-gradient(40% 32% at 50% 100%,rgba(235,240,248,.08),rgba(235,240,248,0) 70%)}
+#pHero{--u:min(100vw / 2048,100vh / 1137);inset:0;display:flex;flex-direction:column;align-items:center;text-align:center;
+  padding:max(92px,calc(150 * var(--u))) var(--gutter) 0;pointer-events:none}
+#pHero a{pointer-events:auto}
+.badge{display:inline-flex;align-items:center;gap:calc(12 * var(--u));height:max(34px,calc(54 * var(--u)));padding:0 max(16px,calc(24 * var(--u))) 0 max(10px,calc(16 * var(--u)));
+  border-radius:999px;border:1px solid rgba(255,255,255,.16);background:rgba(255,255,255,.05);
+  font-size:max(13px,calc(21 * var(--u)));font-weight:600;color:#f1f2f4;-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px)}
+.badge svg{width:max(16px,calc(24 * var(--u)));height:auto;fill:none;stroke:var(--brand);stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}
+.faces{display:flex;align-items:center;margin-top:max(14px,calc(26 * var(--u)))}
+.faces img,.faces b{width:max(40px,calc(72 * var(--u)));height:max(40px,calc(72 * var(--u)));border-radius:50%;object-fit:cover;border:2px solid #fff;margin-left:calc(-18 * var(--u))}
+.faces img:first-child{margin-left:0}
+.faces b{display:grid;place-items:center;background:rgba(255,255,255,.14);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);border-color:rgba(255,255,255,.7)}
+.faces b svg{width:44%;height:44%;fill:#fff}
+#pHero h1{margin-top:max(14px,calc(24 * var(--u)));font-family:var(--display);font-weight:400;text-transform:uppercase;letter-spacing:.005em;
+  font-size:max(46px,calc(142.5 * var(--u)));line-height:.96}
+#pHero h1 .ln{display:block;overflow:hidden;padding-bottom:.04em}
+#pHero h1 .ln span{display:block;color:transparent;-webkit-background-clip:text;background-clip:text;
+  background-image:linear-gradient(180deg,rgb(250,251,252) 8%,rgb(214,218,224) 30%,rgb(170,177,188) 52%,rgb(122,129,140) 74%,rgb(78,84,94) 96%)}
+#pHero .sub{margin-top:max(14px,calc(26 * var(--u)));font-size:max(15px,calc(28.4 * var(--u)));line-height:1.4;color:rgba(232,235,240,.74);max-width:46em}
+.cta{display:flex;align-items:center;gap:calc(12 * var(--u));margin-top:max(20px,calc(40 * var(--u)))}
+.cta .pill{display:inline-flex;align-items:center;height:max(48px,calc(70 * var(--u)));padding:0 max(26px,calc(44 * var(--u)));border-radius:999px;
+  background:var(--brand);color:#fff;font-weight:700;font-size:max(14px,calc(22 * var(--u)));transition:transform .3s var(--ease)}
+.cta .go{display:grid;place-items:center;width:max(48px,calc(70 * var(--u)));height:max(48px,calc(70 * var(--u)));border-radius:50%;background:#fff;color:#0a0b0d;transition:transform .3s var(--ease)}
+.cta .go svg{width:42%;height:42%;fill:none;stroke:currentColor;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;transition:transform .3s var(--ease)}
+.cta .pill:hover{transform:translateY(-2px)}
+.cta .go:hover svg{transform:translateX(3px)}
+.feats{position:absolute;left:var(--gutter);right:var(--gutter);top:calc(50% + 190 * var(--u));display:grid;grid-template-columns:auto 1fr auto;row-gap:calc(46 * var(--u));list-style:none;margin:0;padding:0}
+.feat{display:flex;align-items:center;gap:calc(24 * var(--u));max-width:calc(470 * var(--u));text-align:left}
+.feat:nth-child(-n+2){grid-column:1}
+.feat:nth-child(n+3){grid-column:3;flex-direction:row-reverse;text-align:right}
+.feat:nth-child(1),.feat:nth-child(3){grid-row:1}
+.feat:nth-child(2),.feat:nth-child(4){grid-row:2}
+.feat a{display:contents}
+.tile{flex:none;display:grid;place-items:center;width:calc(84 * var(--u));height:calc(84 * var(--u));border-radius:calc(20 * var(--u));
+  border:1px solid rgba(255,255,255,.14);background:rgba(255,255,255,.04);transition:border-color .3s var(--ease)}
+.tile svg{width:40%;height:40%;fill:none;stroke:#fff;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+.feat h3{font-family:var(--display);font-weight:400;text-transform:uppercase;font-size:calc(28.75 * var(--u));letter-spacing:.02em;line-height:1.05;color:#f4f5f7}
+.feat p{margin-top:calc(6 * var(--u));font-size:calc(19.9 * var(--u));line-height:1.4;color:rgba(214,218,224,.66)}
+.feat:hover h3{color:#fff}
+.feat:hover .tile{border-color:var(--brand)}
+
+/* side */
+#pSide{inset:0;opacity:0;pointer-events:none}
+.side-title{position:absolute;left:var(--gutter);top:17%}
+.side-title h2{font-family:var(--display);font-weight:400;text-transform:uppercase;font-size:clamp(44px,5.6vw,92px);line-height:.92;margin-top:10px}
+.side-title p{margin-top:14px;color:#c9cdd2;max-width:34ch}
+.chip{position:absolute;display:inline-flex;align-items:center;gap:10px;padding:9px 14px 9px 10px;border-radius:12px;background:var(--chip);border:1px solid var(--line);
+  font-size:13px;font-weight:600;white-space:nowrap;-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px)}
+.chip i,.card i{display:grid;place-items:center;width:24px;height:24px;border-radius:7px;background:rgba(227,38,43,.16);border:1px solid rgba(227,38,43,.45)}
+.chip svg,.card svg{width:13px;height:13px;fill:none;stroke:#fff;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.chip span{color:var(--muted);font-weight:500}
+
+/* top-down */
+#pTop{inset:0;opacity:0;pointer-events:none}
+.top-head{position:absolute;left:0;right:0;top:10%;text-align:center}
+.top-head h2{font-family:var(--display);font-weight:400;text-transform:uppercase;font-size:clamp(28px,3vw,44px);line-height:1;margin-top:8px}
+.cards{position:absolute;inset:0;display:grid;grid-template-columns:auto 1fr auto;grid-template-rows:repeat(2,auto);align-content:center;row-gap:14px;padding:9vh var(--gutter) 0}
+.card{display:block;width:clamp(210px,19vw,290px);padding:16px 18px 18px;border-radius:16px;background:rgba(12,14,17,.66);border:1px solid var(--line);
+  -webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);transition:border-color .3s var(--ease),background-color .3s var(--ease)}
+.card:hover{border-color:rgba(227,38,43,.6);background:rgba(18,12,13,.78)}
+.card i{width:30px;height:30px;border-radius:9px;margin-bottom:12px}
+.card svg{width:15px;height:15px}
+.card h3{font-size:15px;font-weight:700}
+.card h3::after{content:" →";color:var(--brand);font-weight:600}
+.card p{font-size:13px;color:var(--muted);line-height:1.45;margin-top:4px}
+.card:nth-child(-n+2){grid-column:1}
+.card:nth-child(n+3){grid-column:3}
+.card:nth-child(1),.card:nth-child(3){grid-row:1}
+.card:nth-child(2),.card:nth-child(4){grid-row:2}
+
+@media (max-width:860px){
+  .cue{display:none}
+  .outline{top:17%;font-size:30vw}
+  .outline span{transform:scaleY(1.7)}
+  #pHero{padding-top:88px}
+  #pHero h1{font-size:clamp(42px,13vw,68px)}
+  #pHero .sub br{display:none}
+  .feats{display:none}
+  .side-title{top:13%;right:var(--gutter)}
+  .side-title h2{font-size:clamp(40px,12vw,64px)}
+  .top-head{top:10%}
+  .cards{inset:auto 0 0 0;grid-template-columns:1fr 1fr;gap:8px;align-content:end;padding:0 var(--gutter) 18px}
+  .card,.card:nth-child(n){grid-column:auto;grid-row:auto;width:auto;padding:10px 12px;border-radius:12px}
+  .card i{width:24px;height:24px;margin-bottom:8px}
+  .card svg{width:12px;height:12px}
+  .card h3{font-size:13px}
+  .card p{display:none}
+}
+@media (max-width:520px){
+  .chip{font-size:12px;padding:7px 11px 7px 8px}
+  .chip span{display:none}
+}
+@media (prefers-reduced-motion:reduce){.cue i{animation:none}}
+html.intro #pHero .badge,html.intro #pHero .faces,html.intro #pHero h1 .ln span,html.intro #pHero .sub,html.intro #pHero .cta>*,html.intro .feat .tile,html.intro .feat h3,html.intro .feat p{opacity:0}
+</style>
+</head>
+<body class="home">
+
+<div class="loader" id="loader" aria-hidden="true">
+  <div class="loader-in">
+    <svg viewBox="0 0 42 34"><path d="M5 2h32l3 26q-19 6-38 0z" fill="none" stroke="#fff" stroke-width="2.2" stroke-linejoin="round"/><path d="M12 9l-3 9M18 8l-2 6" stroke="#fff" stroke-width="1.6" stroke-linecap="round"/></svg>
+    <div class="loader-bar"><i id="loaderFill"></i></div>
+    <div class="loader-label" id="loaderLabel">LOADING 0%</div>
+  </div>
+</div>
+
+<header class="nav" id="nav" data-nav></header>
+
+<main id="top">
+  <section id="stage" aria-label="Frank Windscreens & Tint">
+    <div class="sticky">
+      <div class="bg bg1" id="bg1"></div>
+      <div class="bg bg2" id="bg2"></div>
+      <div class="wash"></div>
+      <div class="outline" id="outline" aria-hidden="true" hidden><span>FRANK</span></div>
+      <canvas id="gl" aria-hidden="true"></canvas>
+
+      <div class="glow" aria-hidden="true"></div>
+      <div class="panel" id="pHero">
+        <p class="badge"><svg viewBox="0 0 24 24"><path d="M12 3l7 3v5c0 4.6-3 8.4-7 10-4-1.6-7-5.4-7-10V6z"/><path d="M9 12l2 2 4-4"/></svg>Now open at 209 Bunda Street, Cairns</p>
+        <h1><span class="ln"><span>Clear glass.</span></span><span class="ln"><span>Sharp tint.</span></span></h1>
+        <p class="sub">Windscreens, chip repairs, side windows and tint for every make and model, <br>fitted in our Parramatta Park workshop.</p>
+        <div class="cta">
+          <a class="pill" href="contact.html">Get a quote</a>
+          <a class="go" href="contact.html" aria-label="Get a quote"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        </div>
+        <ul class="feats">
+          <li class="feat"><a href="windscreen-replacement.html"><span class="tile"><svg viewBox="0 0 24 24"><path d="M4 5h16l1.5 12Q12 20 2.5 17z"/></svg></span><span><h3>Windscreen replacement</h3><p>Cracked screens replaced on all makes and models.</p></span></a></li>
+          <li class="feat"><a href="chip-repair.html"><span class="tile"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 3v4M12 17v4M3 12h4M17 12h4"/></svg></span><span><h3>Stone chip repair</h3><p>Small chips filled before they turn into a crack.</p></span></a></li>
+          <li class="feat"><a href="window-tinting.html"><span class="tile"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 12h18"/></svg></span><span><h3>Window tinting</h3><p>Cut glare and heat in cars, utes and 4WDs.</p></span></a></li>
+          <li class="feat"><a href="side-rear-windows.html"><span class="tile"><svg viewBox="0 0 24 24"><path d="M5 4h10l4 5v11H5z"/><path d="M5 12h14"/></svg></span><span><h3>Side &amp; rear windows</h3><p>Door glass, quarter glass and rear screens.</p></span></a></li>
+        </ul>
+      </div>
+
+      <div class="panel" id="pSide" aria-hidden="true">
+        <div class="side-title">
+          <p class="eyebrow">Frank Windscreens &amp; Tint</p>
+          <h2>Windscreens<br>&amp; Tint</h2>
+          <p>Replacements, chip repairs, side and rear glass, and tint — done in our Parramatta Park workshop.</p>
+        </div>
+      </div>
+
+      <div class="panel" id="pTop">
+        <div class="top-head">
+          <p class="eyebrow">From above</p>
+          <h2>Every pane of glass</h2>
+        </div>
+        <div class="cards">
+          <a class="card" href="windscreen-replacement.html"><i><svg viewBox="0 0 24 24"><path d="M4 5h16l1.5 12Q12 20 2.5 17z"/></svg></i><h3>Windscreen replacement</h3><p>Cracked or damaged screens replaced on all makes and models.</p></a>
+          <a class="card" href="chip-repair.html"><i><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 3v4M12 17v4M3 12h4M17 12h4"/></svg></i><h3>Stone chip repair</h3><p>Small chips filled early, before they turn into a crack.</p></a>
+          <a class="card" href="window-tinting.html"><i><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 12h18"/></svg></i><h3>Window tinting</h3><p>Tint for cars, utes and 4WDs to cut glare and heat.</p></a>
+          <a class="card" href="side-rear-windows.html"><i><svg viewBox="0 0 24 24"><path d="M5 4h10l4 5v11H5z"/><path d="M5 12h14"/></svg></i><h3>Side &amp; rear windows</h3><p>Broken door glass, quarter glass and rear screens replaced.</p></a>
+        </div>
+      </div>
+
+      <button class="cue" id="cue" type="button" aria-label="Scroll down">SCROLL<i></i></button>
+    </div>
+  </section>
+  <section class="section meet" aria-labelledby="meet-title">
+    <div class="split">
+      <img src="assets/photos/frank-portrait.webp" alt="Frank, owner of Frank Windscreens &amp; Tint" loading="lazy" style="object-position:50% 12%">
+      <div>
+        <p class="eyebrow">Meet Frank</p>
+        <h2 id="meet-title" style="margin-top:12px">The name on the sign<br>is the man on the job</h2>
+        <p>Frank Windscreens &amp; Tint is Frank’s own workshop. Before opening on Bunda Street he ran Smithfield Windscreens, and the way he works came with him.</p>
+        <p>He looks at the damage first, tells you straight whether it’s a repair or a replacement, and then does the job properly — windscreens, chips, side glass and tint, on every make and model.</p>
+        <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:26px">
+          <a class="btn" href="tel:0431185183">Call Frank</a>
+          <a class="btn btn--ghost" href="sms:0431185183">Text a photo</a>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="section" aria-labelledby="visit-title">
+    <div class="split">
+      <div>
+        <p class="eyebrow">The workshop</p>
+        <h2 id="visit-title" style="margin-top:12px">209 Bunda Street,<br>Cairns</h2>
+        <p>Next to Lifeline, across the road from Cairns Central. Bring the car in, or call or text Frank with a photo of the damage for a quote.</p>
+        <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:26px">
+          <a class="btn" href="tel:0431185183">Call 0431 185 183</a>
+          <a class="btn btn--ghost" href="sms:0431185183">Text a photo</a>
+        </div>
+      </div>
+      <img src="assets/photos/shopfront.webp" alt="Frank Windscreens &amp; Tint shopfront on Bunda Street" loading="lazy">
+    </div>
+  </section>
+</main>
+
+<footer class="foot" data-foot></footer>
+<script src="assets/site.js"></script>
+
+<script type="module">
+import * as THREE from 'three';
+import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
+import { RoomEnvironment } from 'three/addons/environments/RoomEnvironment.js';
+
+const Q = new URLSearchParams(location.search);
+const REDUCED = matchMedia('(prefers-reduced-motion: reduce)').matches;
+const MODEL = Q.get('model') === 'tripo'
+  ? 'https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20261018_172544_35da5d62-b0db-48ff-8fd8-86c1e8012708.glb'
+  : 'https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20261018_172547_27158316-44cc-4848-a85b-5dac41faaa80.glb';
+const CAR_LEN = 4.6, FOV = 30;
+
+const clamp = (v, a = 0, b = 1) => Math.min(b, Math.max(a, v));
+const lerp = (a, b, t) => a + (b - a) * t;
+const smooth = t => t * t * (3 - 2 * t);
+const ease = t => t < .5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
+const range = (p, a, b) => clamp((p - a) / (b - a));
+const band = (p, a, b, c, d) => Math.min(range(p, a, b), 1 - range(p, c, d));
+
+const $ = id => document.getElementById(id);
+const sticky = document.querySelector('.sticky'), stage = $('stage'), canvas = $('gl');
+
+/* ---------- renderer ---------- */
+const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true, powerPreference: 'high-performance' });
+renderer.setClearColor(0x000000, 0);
+renderer.outputColorSpace = THREE.SRGBColorSpace;
+renderer.toneMapping = THREE.ACESFilmicToneMapping;
+renderer.toneMappingExposure = 1.05;
+const scene = new THREE.Scene();
+const pmrem = new THREE.PMREMGenerator(renderer);
+scene.environment = pmrem.fromScene(new RoomEnvironment(renderer), 0.04).texture;
+const camera = new THREE.PerspectiveCamera(FOV, 1, 0.1, 200);
+
+scene.add(new THREE.HemisphereLight(0xdfe6ff, 0x0a0a0a, 0.35));
+const key = new THREE.DirectionalLight(0xffffff, 2.2); key.position.set(-4, 8, 6); scene.add(key);
+const rim = new THREE.DirectionalLight(0xcfd8ff, 2.6); rim.position.set(3, 4, -7); scene.add(rim);
+const top = new THREE.DirectionalLight(0xffffff, 0.9); top.position.set(0, 10, 0); scene.add(top);
+
+window.__studioLights = on => {
+  renderer.toneMappingExposure = on ? 1.05 : 0.7;
+  key.intensity = on ? 2.2 : 1.1;
+  rim.intensity = on ? 2.6 : 3.4;
+};
+
+/* ---------- car rig ---------- */
+const carRoot = new THREE.Group(), carTilt = new THREE.Group(), wrap = new THREE.Group(), holder = new THREE.Group();
+carRoot.add(carTilt); carTilt.add(wrap); wrap.add(holder); scene.add(carRoot);
+let carDims = new THREE.Vector3(CAR_LEN, 1.3, 1.95), loaded = false;
+
+const reflOuter = new THREE.Group(); reflOuter.scale.y = -1; scene.add(reflOuter);
+const reflRoot = new THREE.Group(), reflTilt = new THREE.Group();
+reflOuter.add(reflRoot); reflRoot.add(reflTilt);
+let reflMats = [];
+
+function radialTex(stops, size = 256) {
+  const c = document.createElement('canvas'); c.width = c.height = size;
+  const g = c.getContext('2d'), gr = g.createRadialGradient(size / 2, size / 2, 0, size / 2, size / 2, size / 2);
+  stops.forEach(([o, col]) => gr.addColorStop(o, col));
+  g.fillStyle = gr; g.fillRect(0, 0, size, size);
+  const t = new THREE.CanvasTexture(c); t.colorSpace = THREE.SRGBColorSpace; return t;
+}
+const shadow = new THREE.Mesh(new THREE.PlaneGeometry(1, 1), new THREE.MeshBasicMaterial({
+  map: radialTex([[0, 'rgba(0,0,0,.95)'], [.45, 'rgba(0,0,0,.6)'], [1, 'rgba(0,0,0,0)']]), transparent: true, depthWrite: false }));
+shadow.rotation.x = -Math.PI / 2; shadow.position.y = 0.004; scene.add(shadow);
+
+/* ---------- loader ---------- */
+const loaderEl = $('loader'), fill = $('loaderFill'), label = $('loaderLabel');
+const setLoad = v => { fill.style.transform = `scaleX(${v / 100})`; label.textContent = 'LOADING ' + v + '%'; };
+if (!REDUCED) document.documentElement.classList.add('intro');
+function entrance() {
+  const root = document.documentElement; if (!root.classList.contains('intro')) return;
+  const E = 'cubic-bezier(.2,.7,.2,1)', go = (el, kf, delay, dur = 900) => el && el.animate(kf, { duration: dur, delay, easing: E, fill: 'backwards' });
+  const h = $('pHero');
+  root.classList.remove('intro');
+  go(h.querySelector('.badge'), [{ opacity: 0, transform: 'translateY(-14px) scale(.96)' }, { opacity: 1, transform: 'none' }], 0);
+  go(h.querySelector('.faces'), [{ opacity: 0, clipPath: 'inset(0 100% 0 0 round 999px)' }, { opacity: 1, clipPath: 'inset(0 0% 0 0 round 999px)' }], 150, 1000);
+  h.querySelectorAll('h1 .ln span').forEach((l, i) => go(l, [{ opacity: 0, transform: 'translateY(105%)' }, { opacity: 1, transform: 'none' }], 300 + i * 120, 1000));
+  go(h.querySelector('.sub'), [{ opacity: 0, transform: 'translateY(18px)' }, { opacity: 1, transform: 'none' }], 620);
+  go(h.querySelector('.cta .pill'), [{ opacity: 0, transform: 'translateY(16px)' }, { opacity: 1, transform: 'none' }], 760);
+  go(h.querySelector('.cta .go'), [{ opacity: 0, transform: 'translateX(-28px) scale(.8)' }, { opacity: 1, transform: 'none' }], 880);
+  h.querySelectorAll('.feat').forEach((f, i) => {
+    const row = i % 2, base = 1000 + row * 180, kids = f.querySelectorAll('.tile, h3, p');
+    kids.forEach((k, j) => go(k, [{ opacity: 0, transform: 'translateY(12px)' }, { opacity: 1, transform: 'none' }], base + j * 90, 800));
+  });
+}
+const finishLoader = (ms = 250) => setTimeout(() => { loaderEl.classList.add('done'); setTimeout(entrance, 250); }, ms);
+
+new GLTFLoader().load(MODEL, gltf => {
+  const root = gltf.scene;
+  root.traverse(o => {
+    if (!o.isMesh) return;
+    const m0 = o.material;
+    const m = new THREE.MeshPhysicalMaterial({
+      map: m0.map || null, normalMap: m0.normalMap || null, roughnessMap: m0.roughnessMap || null,
+      metalnessMap: m0.metalnessMap || null, aoMap: m0.aoMap || null, emissiveMap: m0.emissiveMap || null,
+      emissive: m0.emissive ? m0.emissive.clone() : new THREE.Color(0), color: m0.color ? m0.color.clone() : new THREE.Color(0xffffff),
+      roughness: .34, metalness: .4, clearcoat: 1, clearcoatRoughness: .06, envMapIntensity: 1.25,
+      emissiveIntensity: m0.emissiveMap ? 1.5 : 1
+    });
+    const aniso = renderer.capabilities.getMaxAnisotropy();
+    [m.map, m.normalMap, m.roughnessMap, m.metalnessMap, m.emissiveMap].forEach(t => { if (t) { t.anisotropy = aniso; t.needsUpdate = true; } });
+    o.material = m;
+  });
+  holder.add(root);
+  let box = new THREE.Box3().setFromObject(holder), size = box.getSize(new THREE.Vector3());
+  const yawOverride = parseFloat(Q.get('yaw'));
+  holder.rotation.y = isNaN(yawOverride) ? (size.z > size.x ? Math.PI / 2 : 0) + Math.PI : yawOverride;
+  holder.updateMatrixWorld(true);
+  box = new THREE.Box3().setFromObject(holder); size = box.getSize(new THREE.Vector3());
+  holder.scale.setScalar(CAR_LEN / Math.max(size.x, size.z));
+  holder.updateMatrixWorld(true);
+  box = new THREE.Box3().setFromObject(holder);
+  const ctr = box.getCenter(new THREE.Vector3());
+  holder.position.x -= ctr.x; holder.position.z -= ctr.z; holder.position.y -= box.min.y;
+  holder.updateMatrixWorld(true);
+  carDims = new THREE.Box3().setFromObject(holder).getSize(new THREE.Vector3());
+
+  const clone = wrap.clone(true);
+  clone.traverse(o => { if (o.isMesh) { o.material = o.material.clone(); o.material.transparent = true; o.material.depthWrite = false; o.material.opacity = .16; reflMats.push(o.material); } });
+  reflTilt.add(clone);
+
+  loaded = true; buildKeys(); setupNozzles();
+  setLoad(100); finishLoader();
+}, e => {
+  if (e.total) setLoad(Math.min(99, Math.round(e.loaded / e.total * 100)));
+}, () => { label.textContent = 'MODEL UNAVAILABLE'; finishLoader(900); });
+
+/* ---------- air-burst effects ---------- */
+const FX = false; /* clean build: no air-burst effects */
+const NOZ = [[-.36, -.30], [-.36, .30], [.30, -.32], [.30, .32], [0, 0]];
+let nozLocal = [];
+const N = 1400;
+const pPos = new Float32Array(N * 3), pVel = new Float32Array(N * 3), pAge = new Float32Array(N).fill(99), pLife = new Float32Array(N).fill(1),
+  pBase = new Float32Array(N), pSize = new Float32Array(N), pAlpha = new Float32Array(N);
+const pGeo = new THREE.BufferGeometry();
+pGeo.setAttribute('position', new THREE.BufferAttribute(pPos, 3));
+pGeo.setAttribute('aSize', new THREE.BufferAttribute(pSize, 1));
+pGeo.setAttribute('aAlpha', new THREE.BufferAttribute(pAlpha, 1));
+const pMat = new THREE.ShaderMaterial({
+  uniforms: { uScale: { value: 1 } }, transparent: true, depthWrite: false, blending: THREE.AdditiveBlending,
+  vertexShader: `attribute float aSize; attribute float aAlpha; uniform float uScale; varying float vA;
+    void main(){ vec4 mv = modelViewMatrix*vec4(position,1.); vA=aAlpha; gl_PointSize = aSize*uScale/-mv.z; gl_Position = projectionMatrix*mv; }`,
+  fragmentShader: `varying float vA; void main(){ float d = length(gl_PointCoord-.5); float a = smoothstep(.5,0.,d); a*=a; gl_FragColor = vec4(vec3(0.839,0.902,1.),a*vA); }`
+});
+const points = new THREE.Points(pGeo, pMat); points.frustumCulled = false; if (FX) scene.add(points);
+let pHead = 0;
+const tmpV = new THREE.Vector3();
+
+function setupNozzles() {
+  nozLocal = NOZ.map(([l, w]) => new THREE.Vector3(l * carDims.x, 0.06, w * carDims.z));
+  glows.forEach((s, i) => s.position.set(nozLocal[i].x, .05, nozLocal[i].z));
+}
+function emit(count, speed) {
+  if (!FX || !nozLocal.length) return;
+  for (let k = 0; k < count; k++) {
+    const i = pHead; pHead = (pHead + 1) % N;
+    const n = nozLocal[(Math.random() * nozLocal.length) | 0];
+    tmpV.set(n.x + (Math.random() - .5) * .5, .06, n.z + (Math.random() - .5) * .3).applyMatrix4(carTilt.matrixWorld);
+    pPos[i * 3] = tmpV.x; pPos[i * 3 + 1] = tmpV.y; pPos[i * 3 + 2] = tmpV.z;
+    pVel[i * 3] = (Math.random() - .5) * .8; pVel[i * 3 + 1] = -speed * (.75 + Math.random() * .5); pVel[i * 3 + 2] = (Math.random() - .5) * .8;
+    pAge[i] = 0; pLife[i] = .9 + Math.random() * 1.1; pBase[i] = .025 + Math.random() * .05;
+  }
+}
+function stepParticles(dt) {
+  const cx = carRoot.position.x, cz = carRoot.position.z, drag = Math.exp(-1.6 * dt);
+  for (let i = 0; i < N; i++) {
+    if (pAge[i] >= pLife[i]) { pAlpha[i] = 0; continue; }
+    pAge[i] += dt;
+    const j = i * 3;
+    pPos[j] += pVel[j] * dt; pPos[j + 1] += pVel[j + 1] * dt; pPos[j + 2] += pVel[j + 2] * dt;
+    if (pPos[j + 1] <= .03 && pVel[j + 1] < 0) {
+      const sp = Math.abs(pVel[j + 1]) * (.8 + Math.random() * .5);
+      let dx = pPos[j] - cx, dz = pPos[j + 2] - cz; const l = Math.hypot(dx, dz) || 1; dx /= l; dz /= l;
+      pVel[j] = dx * sp + (Math.random() - .5) * .4; pVel[j + 2] = dz * sp + (Math.random() - .5) * .4;
+      pVel[j + 1] = Math.random() * .25; pPos[j + 1] = .03;
+    }
+    pVel[j] *= drag; pVel[j + 2] *= drag;
+    const t = pAge[i] / pLife[i];
+    pSize[i] = pBase[i] * (1 + 5 * t);
+    pAlpha[i] = Math.pow(1 - t, 1.6) * Math.min(1, pAge[i] * 8) * .32;
+  }
+  pGeo.attributes.position.needsUpdate = pGeo.attributes.aSize.needsUpdate = pGeo.attributes.aAlpha.needsUpdate = true;
+}
+
+const hazeTex = radialTex([[0, 'rgba(255,255,255,.55)'], [.35, 'rgba(235,240,255,.22)'], [1, 'rgba(255,255,255,0)']]);
+const puffs = Array.from({ length: 26 }, () => {
+  const m = new THREE.Mesh(new THREE.PlaneGeometry(1, 1), new THREE.MeshBasicMaterial({ map: hazeTex, transparent: true, depthWrite: false, blending: THREE.AdditiveBlending, opacity: 0 }));
+  m.rotation.x = -Math.PI / 2; m.visible = false; if (FX) scene.add(m);
+  return { m, age: 9, life: 1, vx: 0, vz: 0, s0: 1, s1: 5, o: .1 };
+});
+let puffHead = 0;
+function puff(strength) {
+  if (!FX) return;
+  const p = puffs[puffHead]; puffHead = (puffHead + 1) % puffs.length;
+  const a = Math.random() * Math.PI * 2, sp = .4 + Math.random() * .8;
+  p.m.position.set(carRoot.position.x + Math.cos(a) * .5, .02 + Math.random() * .05, carRoot.position.z + Math.sin(a) * .5);
+  p.vx = Math.cos(a) * sp; p.vz = Math.sin(a) * sp; p.age = 0; p.life = 2 + Math.random() * 1.6;
+  p.s0 = 1.2 + Math.random(); p.s1 = 5 + Math.random() * 4; p.o = .10 + .08 * strength; p.m.visible = true;
+}
+function ringTex() {
+  const s = 512, c = document.createElement('canvas'); c.width = c.height = s;
+  const g = c.getContext('2d'), gr = g.createRadialGradient(s / 2, s / 2, 0, s / 2, s / 2, s / 2);
+  gr.addColorStop(0, 'rgba(220,232,255,0)'); gr.addColorStop(.62, 'rgba(220,232,255,0)'); gr.addColorStop(.84, 'rgba(220,232,255,.85)');
+  gr.addColorStop(.9, 'rgba(255,255,255,.35)'); gr.addColorStop(1, 'rgba(255,255,255,0)');
+  g.fillStyle = gr; g.fillRect(0, 0, s, s); const t = new THREE.CanvasTexture(c); t.colorSpace = THREE.SRGBColorSpace; return t;
+}
+const rTex = ringTex();
+const rings = Array.from({ length: 3 }, () => {
+  const m = new THREE.Mesh(new THREE.PlaneGeometry(1, 1), new THREE.MeshBasicMaterial({ map: rTex, transparent: true, depthWrite: false, blending: THREE.AdditiveBlending, opacity: 0 }));
+  m.rotation.x = -Math.PI / 2; m.position.y = .01; m.visible = false; if (FX) scene.add(m);
+  return { m, age: 9, str: 1 };
+});
+let ringHead = 0;
+function shock(str) {
+  if (!FX) return;
+  const r = rings[ringHead]; ringHead = (ringHead + 1) % rings.length;
+  r.age = 0; r.str = str; r.m.visible = true; r.m.position.x = carRoot.position.x; r.m.position.z = carRoot.position.z;
+}
+const glowTex = radialTex([[0, 'rgba(255,255,255,1)'], [.2, 'rgba(190,215,255,.65)'], [1, 'rgba(190,215,255,0)']]);
+const glows = NOZ.map((_, i) => {
+  const s = new THREE.Sprite(new THREE.SpriteMaterial({ map: glowTex, color: 0xcfe2ff, transparent: true, depthWrite: false, blending: THREE.AdditiveBlending, opacity: 0 }));
+  if (FX) carTilt.add(s); s.userData.k = i === 4 ? .5 : .85; return s;
+});
+function jetTex() {
+  const c = document.createElement('canvas'); c.width = 64; c.height = 256; const g = c.getContext('2d');
+  const v = g.createLinearGradient(0, 0, 0, 256); v.addColorStop(0, 'rgba(225,236,255,.9)'); v.addColorStop(.5, 'rgba(200,220,255,.35)'); v.addColorStop(1, 'rgba(200,220,255,0)');
+  g.fillStyle = v; g.fillRect(0, 0, 64, 256);
+  g.globalCompositeOperation = 'destination-in';
+  const h = g.createLinearGradient(0, 0, 64, 0); h.addColorStop(0, 'rgba(0,0,0,0)'); h.addColorStop(.5, 'rgba(0,0,0,1)'); h.addColorStop(1, 'rgba(0,0,0,0)');
+  g.fillStyle = h; g.fillRect(0, 0, 64, 256);
+  const t = new THREE.CanvasTexture(c); t.colorSpace = THREE.SRGBColorSpace; return t;
+}
+const jTex = jetTex();
+const jets = [0, 1, 2, 3].map(() => {
+  const s = new THREE.Sprite(new THREE.SpriteMaterial({ map: jTex, transparent: true, depthWrite: false, blending: THREE.AdditiveBlending, opacity: 0 }));
+  s.center.set(.5, 1); if (FX) scene.add(s); return s;
+});
+
+/* ---------- timeline ---------- */
+let keys = [];
+function buildKeys() {
+  const w = sticky.clientWidth, h = sticky.clientHeight, aspect = w / h;
+  const portrait = aspect < .9, tanV = Math.tan(THREE.MathUtils.degToRad(15));
+  const fitW = (s, f) => s / (f * 2 * tanV * aspect), fitH = (s, f) => s / (f * 2 * tanV);
+  const L = carDims.x;
+  const d0 = portrait ? fitW(L, .92) : fitW(L, .46);
+  const g0 = portrait ? .86 : .9, h0 = d0 * tanV * (2 * g0 - 1);
+  const x0 = 0;
+  const d2 = portrait ? fitW(L, 1.05) : fitW(L, .62);
+  const d3 = portrait ? Math.max(fitH(L, .42), fitW(carDims.z, .42)) : fitH(L, .5);
+  const off3 = portrait ? d3 * tanV * .2 : 0;
+  const base = { cx: x0, cy: 0, cz: 0, yaw: 0, pitch: 0, roll: 0, ex: x0 * .3, ey: h0, ez: d0, tx: x0 * .3, ty: h0, tz: 0, up: 0 };
+  const P = portrait;
+  const k84 = { cx: 0, cy: 0, cz: 0, yaw: -Math.PI / 2, pitch: 0, roll: 0, ex: 0, ey: d3, ez: off3 + .001, tx: 0, ty: 0, tz: off3, up: 1 };
+  keys = [
+    [0, base], [.05, base],
+    [.15, { ...base, cx: P ? 0 : x0 + L * .05, cy: .45, pitch: -.035, ey: h0 + .08, ty: h0 + .12 }],
+    [.26, { ...base, cx: P ? 0 : x0 + L * .11, cy: 1.15, pitch: -.02, roll: .01, ey: h0 + .2, ty: h0 + .42, ez: d0 * 1.1 }],
+    [.31, { ...base, cx: P ? 0 : x0 + L * .13, cy: 1.2, pitch: 0, ey: h0 + .22, ty: h0 + .46, ez: d0 * 1.12 }],
+    [.46, { cx: P ? .2 : L * .3, cy: .75, cz: 0, yaw: .72, pitch: .015, roll: -.04, ex: P ? .2 : L * .05, ey: P ? 1.6 : 2.1, ez: d2 * 1.08, tx: P ? .2 : L * .1, ty: P ? .95 : 1.05, tz: 0, up: 0 }],
+    [.60, { cx: P ? .2 : L * .3, cy: .8, cz: 0, yaw: .86, pitch: .01, roll: -.03, ex: P ? .2 : L * .07, ey: P ? 1.7 : 2.2, ez: d2 * 1.02, tx: P ? .2 : L * .11, ty: P ? 1.0 : 1.1, tz: 0, up: 0 }],
+    [.72, { cx: 0, cy: .9, cz: 0, yaw: -.6, pitch: 0, roll: .05, ex: 0, ey: d3 * .75, ez: d3 * .45, tx: 0, ty: 0, tz: off3 * .5, up: .6 }],
+    [.84, k84],
+    [1, { ...k84, ey: d3 * .96 }]
+  ];
+  /* the car stays planted on the floor: it turns, it does not fly */
+  keys = keys.map(([p, k]) => [p, { ...k, cy: 0, pitch: 0, roll: 0 }]);
+}
+function sample(p) {
+  let i = 0; while (i < keys.length - 2 && p > keys[i + 1][0]) i++;
+  const [pa, a] = keys[i], [pb, b] = keys[i + 1];
+  const t = ease(clamp((p - pa) / (pb - pa || 1)));
+  const o = {}; for (const k in a) o[k] = lerp(a[k], b[k], t); return o;
+}
+
+/* ---------- DOM refs ---------- */
+const pHero = $('pHero'), cue = $('cue'), outline = $('outline'), pSide = $('pSide'), pTop = $('pTop'), bg1 = $('bg1'), bg2 = $('bg2');
+const chips = [...pSide.querySelectorAll('.chip')], cards = [...pTop.querySelectorAll('.card')];
+const CHIP_POS = [[22, 56], [44, 78], [3, 66], [20, 76], [6, 86]];
+let portrait = false;
+function layoutChips() {
+  chips.forEach((c, i) => {
+    if (portrait) {
+      c.style.display = i < 4 ? '' : 'none';
+      c.style.left = (i % 2 ? 50 : 0) + 'vw'; c.style.marginLeft = 'var(--gutter)'; c.style.top = 'auto';
+      c.style.bottom = (6 + Math.floor(i / 2) * 7) + '%';
+    } else {
+      c.style.display = ''; c.style.left = CHIP_POS[i][0] + '%'; c.style.top = CHIP_POS[i][1] + '%'; c.style.bottom = 'auto'; c.style.marginLeft = '0';
+    }
+  });
+}
+
+/* ---------- resize ---------- */
+function resize() {
+  const w = sticky.clientWidth, h = sticky.clientHeight;
+  renderer.setPixelRatio(Math.min(devicePixelRatio, w < 700 ? 2.5 : 2.5));
+  renderer.setSize(w, h, false);
+  camera.aspect = w / h; camera.updateProjectionMatrix();
+  pMat.uniforms.uScale.value = (h * renderer.getPixelRatio()) / (2 * Math.tan(THREE.MathUtils.degToRad(FOV / 2)));
+  portrait = w / h < .9;
+  buildKeys(); layoutChips();
+}
+addEventListener('resize', resize); resize();
+
+/* ---------- loop ---------- */
+const pinned = Q.has('p') ? clamp(parseFloat(Q.get('p')) || 0) : null;
+let pFixed = pinned;
+window.__setP = v => { pFixed = clamp(v); };
+let pNow = pFixed ?? 0, last = performance.now(), time = 0, prevCy = 0, airborne = false;
+
+function progress() {
+  if (pFixed != null) return pFixed;
+  const r = stage.getBoundingClientRect();
+  return clamp(-r.top / (r.height - innerHeight));
+}
+function frame() {
+  const now = performance.now(); const dt = Math.min(.05, (now - last) / 1000); last = now; time += dt;
+  const p = progress();
+  pNow = REDUCED ? p : pNow + (p - pNow) * (1 - Math.exp(-dt * 10));
+  const s = sample(pNow);
+
+  // car
+  const hoverK = clamp(s.cy / .4);
+  const bob = FX ? Math.sin(time * 1.6) * .035 * hoverK : 0;
+  carRoot.position.set(s.cx, s.cy + bob, s.cz);
+  carRoot.rotation.y = s.yaw;
+  carTilt.rotation.z = s.pitch + (FX ? Math.sin(time * 1.1) * .006 * hoverK : 0);
+  carTilt.rotation.x = s.roll + (FX ? Math.sin(time * .9 + 1) * .008 * hoverK : 0);
+  carRoot.updateMatrixWorld(true);
+
+  // camera
+  camera.position.set(s.ex, s.ey, s.ez);
+  camera.up.set(0, 1 - s.up, -s.up).normalize();
+  camera.lookAt(s.tx, s.ty, s.tz);
+
+  // reflection
+  const cy = carRoot.position.y;
+  reflRoot.position.copy(carRoot.position); reflRoot.rotation.y = carRoot.rotation.y;
+  reflTilt.rotation.copy(carTilt.rotation);
+  const ro = .16 * (1 - clamp(cy / 1.6)) * (1 - range(pNow, .5, .66));
+  reflOuter.visible = ro > .004 && loaded; reflMats.forEach(m => m.opacity = ro);
+
+  // contact shadow
+  const sh = clamp(1 - cy / 2.2);
+  shadow.scale.set(carDims.x * (1.15 + (1 - sh) * .6), carDims.z * (1.5 + (1 - sh) * .8), 1);
+  shadow.material.opacity = loaded ? .85 * sh * sh : 0;
+  shadow.position.x = carRoot.position.x; shadow.position.z = carRoot.position.z; shadow.rotation.z = carRoot.rotation.y;
+
+  // air
+  if (FX && loaded) {
+    const vs = Math.abs(cy - prevCy) / Math.max(dt, 1e-4);
+    const hover = clamp(cy / .25), thrust = clamp(hover * .55 + vs * .35);
+    if (cy > .04 && !airborne) { airborne = true; shock(1); for (let i = 0; i < 8; i++) puff(1); emit(220, 7); }
+    if (cy < .04 && airborne) { airborne = false; shock(.9); for (let i = 0; i < 10; i++) puff(1.2); }
+    if (hover > 0) emit(Math.round((60 + 520 * thrust) * dt + Math.random()), 4.5 + 4 * thrust);
+    if (airborne && Math.random() < dt * 2.2 * thrust) puff(.6);
+    glows.forEach(g => { g.material.opacity = thrust * g.userData.k; const k = .35 + .45 * thrust; g.scale.set(k, k * .6, 1); });
+    jets.forEach((j, i) => {
+      const n = nozLocal[i]; if (!n) return;
+      tmpV.set(n.x, .05, n.z).applyMatrix4(carTilt.matrixWorld);
+      const h = Math.max(0, tmpV.y);
+      j.position.copy(tmpV); j.scale.set(.35 + h * .35, Math.max(.001, h * 1.05), 1);
+      j.material.opacity = thrust * .4 * clamp(h / .2) * (.85 + Math.random() * .15);
+    });
+    stepParticles(dt);
+    puffs.forEach(q => {
+      if (q.age >= q.life) { q.m.visible = false; return; }
+      q.age += dt; const t = q.age / q.life, damp = Math.exp(-dt);
+      q.vx *= damp; q.vz *= damp; q.m.position.x += q.vx * dt; q.m.position.z += q.vz * dt;
+      const sc = lerp(q.s0, q.s1, 1 - Math.pow(1 - t, 2)); q.m.scale.set(sc, sc, 1);
+      q.m.material.opacity = q.o * Math.sin(Math.PI * Math.min(1, t * 1.15));
+    });
+    rings.forEach(r => {
+      if (r.age >= 1.3) { r.m.visible = false; return; }
+      r.age += dt; const t = r.age / 1.3, e = 1 - Math.pow(1 - t, 3), sc = lerp(.8, 7 + 5 * r.str, e);
+      r.m.scale.set(sc, sc, 1); r.m.material.opacity = .55 * r.str * Math.pow(1 - t, 1.5);
+    });
+  }
+  prevCy = cy;
+
+  // DOM
+  const ho = 1 - range(pNow, .04, .12);
+  pHero.style.opacity = ho; pHero.style.transform = `translateY(${-40 * (1 - ho)}px)`; pHero.style.pointerEvents = ho > .5 ? 'auto' : 'none';
+  pHero.setAttribute('aria-hidden', ho > .5 ? 'false' : 'true');
+  cue.style.opacity = 1 - range(pNow, .01, .05);
+  const oT = range(pNow, .03, .3);
+  outline.style.transform = `translateX(-50%) translateY(${-oT * 12}vh) scale(${1 + oT * .08})`;
+  outline.style.letterSpacing = (.005 + oT * .06) + 'em';
+  outline.style.opacity = portrait ? 1 - range(pNow, .05, .13) : 1 - range(pNow, .24, .36);
+  const so = band(pNow, .40, .47, .60, .66);
+  pSide.style.opacity = so;
+  chips.forEach((c, i) => { const t = smooth(range(pNow, .43 + i * .012, .48 + i * .012)) * (1 - range(pNow, .6, .65)); c.style.opacity = t; c.style.transform = `translateY(${(1 - t) * 14}px)`; });
+  const to = range(pNow, .82, .88);
+  pTop.style.opacity = to; pTop.style.pointerEvents = to > .5 ? 'auto' : 'none';
+  cards.forEach((c, i) => { const t = smooth(range(pNow, .83 + i * .01, .89 + i * .01)); c.style.opacity = t; c.style.transform = `translateY(${(1 - t) * 16}px)`; c.tabIndex = to > .5 ? 0 : -1; });
+  const b = range(pNow, .62, .78);
+  bg1.style.opacity = 1 - b; bg1.style.transform = `scale(${1 + range(pNow, 0, .62) * .06}) translateY(${-b * 6}%)`;
+  bg2.style.opacity = b; bg2.style.transform = `scale(${1.12 - b * .12})`;
+
+  renderer.render(scene, camera);
+  schedule();
+}
+cue.addEventListener('click', () => scrollTo({ top: stage.offsetTop + (stage.offsetHeight - innerHeight) * .45, behavior: REDUCED ? 'auto' : 'smooth' }));
+const schedule = Q.has('tick') ? () => setTimeout(frame, 40) : () => requestAnimationFrame(frame);
+schedule();
+</script>
+</body>
+</html>
