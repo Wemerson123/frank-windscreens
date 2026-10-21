@@ -24,15 +24,26 @@
 {"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"}}
 </script>
 <style>
-/* ---------- loader ---------- */
-.loader{position:fixed;inset:0;z-index:100;background:var(--bg);display:grid;place-items:center;transition:opacity .9s var(--ease),visibility .9s var(--ease)}
-.loader.done{opacity:0;visibility:hidden}
-.loader-in{display:flex;flex-direction:column;align-items:center;gap:18px}
-.loader svg{width:42px;height:34px;animation:pulse 1.6s ease-in-out infinite}
-@keyframes pulse{50%{opacity:.35}}
-.loader-bar{width:160px;height:1px;background:var(--line);overflow:hidden}
-.loader-bar i{display:block;height:100%;width:100%;background:#fff;transform:scaleX(0);transform-origin:left;transition:transform .3s}
-.loader-label{font-size:11px;letter-spacing:.22em;color:var(--muted);font-variant-numeric:tabular-nums}
+/* ---------- loader: the workshop roller door ---------- */
+.loader{position:fixed;inset:0;z-index:100;display:grid;place-items:center;overflow:hidden;
+  background:
+    radial-gradient(70% 60% at 50% 45%,rgba(255,255,255,.05),rgba(0,0,0,.55) 100%),
+    repeating-linear-gradient(180deg,#15171b 0 21px,#0b0c0e 21px 23px,#1d2025 23px 25px,#121417 25px 28px);
+  transition:transform 1.25s cubic-bezier(.75,0,.2,1),visibility 0s linear 1.25s}
+.loader::after{content:"";position:absolute;left:0;right:0;bottom:0;height:14px;background:linear-gradient(#2a2e34,#0d0e10);box-shadow:0 -1px 0 rgba(255,255,255,.08)}
+.loader::before{content:"";position:absolute;left:0;right:0;bottom:14px;height:2px;background:var(--brand)}
+.loader.done{transform:translateY(-100%);visibility:hidden}
+.loader-in{position:relative;z-index:1;display:flex;flex-direction:column;align-items:center;gap:16px;transition:opacity .5s var(--ease),transform .5s var(--ease)}
+.loader.done .loader-in{opacity:0;transform:translateY(-24px)}
+.ld-mark{font-family:var(--display);font-weight:400;font-size:clamp(64px,13vw,180px);line-height:.9;letter-spacing:.02em;color:transparent;
+  background:linear-gradient(100deg,#6f757e 0%,#c9cdd3 30%,#ffffff 45%,#c9cdd3 60%,#5d636b 100%) 0 0/250% 100%;-webkit-background-clip:text;background-clip:text;
+  animation:sheen 2.4s cubic-bezier(.45,0,.2,1) infinite}
+@keyframes sheen{from{background-position:120% 0}to{background-position:-60% 0}}
+.ld-sub{font-size:11px;font-weight:700;letter-spacing:.42em;color:#9aa0a8;margin-top:-4px}
+.loader-bar{width:min(220px,50vw);height:1px;background:rgba(255,255,255,.12);overflow:hidden;margin-top:14px}
+.loader-bar i{display:block;height:100%;width:100%;background:var(--brand);transform:scaleX(0);transform-origin:left;transition:transform .3s}
+.loader-label{font-size:10px;letter-spacing:.24em;color:var(--muted);font-variant-numeric:tabular-nums}
+@media (prefers-reduced-motion:reduce){.ld-mark{animation:none}.loader{transition:opacity .4s,visibility 0s linear .4s}.loader.done{transform:none;opacity:0}}
 
 /* ---------- stage ---------- */
 #stage{position:relative;height:420vh}
@@ -156,7 +167,8 @@ html.intro #pHero .badge,html.intro #pHero .faces,html.intro #pHero h1 .ln span,
 
 <div class="loader" id="loader" aria-hidden="true">
   <div class="loader-in">
-    <svg viewBox="0 0 42 34"><path d="M5 2h32l3 26q-19 6-38 0z" fill="none" stroke="#fff" stroke-width="2.2" stroke-linejoin="round"/><path d="M12 9l-3 9M18 8l-2 6" stroke="#fff" stroke-width="1.6" stroke-linecap="round"/></svg>
+    <div class="ld-mark">FRANK</div>
+    <div class="ld-sub">WINDSCREENS &amp; TINT</div>
     <div class="loader-bar"><i id="loaderFill"></i></div>
     <div class="loader-label" id="loaderLabel">LOADING 0%</div>
   </div>
@@ -333,7 +345,13 @@ function entrance() {
     kids.forEach((k, j) => go(k, [{ opacity: 0, transform: 'translateY(12px)' }, { opacity: 1, transform: 'none' }], base + j * 90, 800));
   });
 }
-const finishLoader = (ms = 250) => setTimeout(() => { loaderEl.classList.add('done'); setTimeout(entrance, 250); }, ms);
+let revealT0 = null;
+const finishLoader = (ms = 450) => setTimeout(() => { loaderEl.classList.add('done'); revealT0 = performance.now() + 550; setTimeout(entrance, 900); }, ms);
+/* studio: the car turns to follow the visitor */
+const FINE = matchMedia('(pointer:fine)').matches;
+let mxT = 0, myT = 0, mx = 0, my = 0;
+addEventListener('pointermove', e => { mxT = e.clientX / innerWidth * 2 - 1; myT = e.clientY / innerHeight * 2 - 1; }, { passive: true });
+const sweep = new THREE.DirectionalLight(0xffffff, 0); sweep.position.set(0, 3, 8); scene.add(sweep);
 
 new GLTFLoader().load(MODEL, gltf => {
   const root = gltf.scene;
@@ -573,13 +591,24 @@ function frame() {
   const hoverK = clamp(s.cy / .4);
   const bob = FX ? Math.sin(time * 1.6) * .035 * hoverK : 0;
   carRoot.position.set(s.cx, s.cy + bob, s.cz);
-  carRoot.rotation.y = s.yaw;
+  // studio reveal: lights switch on bank by bank while the car turns in
+  const rt = REDUCED ? 99 : revealT0 == null ? 0 : (now - revealT0) / 1000;
+  const bank = (at, dur = .18) => { const u = clamp((rt - at) / dur); return u >= 1 ? 1 : u * (.55 + .45 * Math.sin(u * 40)); };
+  key.intensity = 2.2 * bank(.15); rim.intensity = 2.6 * bank(.55); top.intensity = .9 * bank(.95);
+  renderer.toneMappingExposure = .25 + .8 * clamp(rt / 1.2);
+  const spin = 1 - Math.pow(1 - clamp((rt - .1) / 2.8), 3);
+  // follow the pointer while the hero is on screen (gentle sway on touch screens)
+  const heroK = 1 - range(pNow, .03, .12);
+  const tx = FINE ? mxT : Math.sin(time * .35) * .6, ty = FINE ? myT : 0;
+  mx += (tx - mx) * (1 - Math.exp(-dt * 3)); my += (ty - my) * (1 - Math.exp(-dt * 3));
+  carRoot.rotation.y = s.yaw - (1 - spin) * Math.PI * 2 + mx * .38 * heroK * spin;
+  sweep.intensity = 1.6 * heroK * spin; sweep.position.set(mx * 9, 3 - my * 2, 8);
   carTilt.rotation.z = s.pitch + (FX ? Math.sin(time * 1.1) * .006 * hoverK : 0);
   carTilt.rotation.x = s.roll + (FX ? Math.sin(time * .9 + 1) * .008 * hoverK : 0);
   carRoot.updateMatrixWorld(true);
 
   // camera
-  camera.position.set(s.ex, s.ey, s.ez);
+  camera.position.set(s.ex, s.ey - my * .18 * heroK, s.ez);
   camera.up.set(0, 1 - s.up, -s.up).normalize();
   camera.lookAt(s.tx, s.ty, s.tz);
 
