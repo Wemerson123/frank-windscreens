@@ -139,3 +139,38 @@ img{display:block;max-width:100%}
 @media (max-width:520px){
   .steps{grid-template-columns:1fr}
 }
+
+/* ---------- floating quote button ---------- */
+.fab{position:fixed;right:clamp(16px,2.4vw,28px);bottom:clamp(16px,2.4vw,28px);z-index:60;display:flex;flex-direction:column;align-items:flex-end;gap:10px;
+  opacity:0;transform:translateY(16px);pointer-events:none;transition:opacity .45s var(--ease),transform .45s var(--ease)}
+.fab.on{opacity:1;transform:none;pointer-events:auto}
+.fab-btn{display:inline-flex;align-items:center;gap:12px;height:56px;padding:0 22px 0 8px;border-radius:999px;border:0;cursor:pointer;
+  background:var(--brand);color:#fff;font:700 15px/1 var(--body);letter-spacing:.01em;box-shadow:0 14px 30px -12px rgba(0,0,0,.7);
+  transition:transform .3s var(--ease),background-color .3s var(--ease)}
+.fab-btn:hover{transform:translateY(-2px);background:#f02f34}
+.fab-btn:focus-visible,.fab-menu a:focus-visible{outline:2px solid #fff;outline-offset:3px}
+.fab-ic{display:grid;place-items:center;width:40px;height:40px;border-radius:50%;background:#fff;overflow:hidden}
+.fab-ic svg{width:24px;height:20px}
+.fab-ic .wiper{transform-origin:12px 17px;animation:wipe 4.5s var(--ease) infinite}
+@keyframes wipe{0%,70%,100%{transform:rotate(-58deg)}80%{transform:rotate(52deg)}90%{transform:rotate(-58deg)}}
+.fab-btn[aria-expanded="true"] .fab-ic .wiper{animation:none}
+.fab-x{display:none}
+.fab-btn[aria-expanded="true"] .fab-x{display:block}
+.fab-btn[aria-expanded="true"] .fab-w{display:none}
+.fab-menu{display:grid;gap:8px;min-width:260px;padding:10px;border-radius:20px;background:rgba(13,15,18,.94);border:1px solid var(--line);
+  -webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);box-shadow:0 24px 50px -20px rgba(0,0,0,.8);
+  transform-origin:100% 100%;transform:translateY(8px) scale(.96);opacity:0;visibility:hidden;transition:opacity .25s var(--ease),transform .3s var(--ease),visibility 0s linear .3s}
+.fab.open .fab-menu{opacity:1;transform:none;visibility:visible;transition:opacity .25s var(--ease),transform .3s var(--ease)}
+.fab-menu p{padding:6px 10px 4px;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.fab-menu a{display:flex;align-items:center;gap:12px;padding:12px;border-radius:14px;color:var(--ink);transition:background-color .2s var(--ease)}
+.fab-menu a:hover{background:rgba(255,255,255,.06)}
+.fab-menu a i{display:grid;place-items:center;flex:none;width:36px;height:36px;border-radius:11px;background:rgba(227,38,43,.14);border:1px solid rgba(227,38,43,.4)}
+.fab-menu a i svg{width:17px;height:17px;fill:none;stroke:#fff;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.fab-menu b{display:block;font-size:15px;font-weight:700}
+.fab-menu small{display:block;font-size:12.5px;color:var(--muted);margin-top:1px}
+.fab.open .fab-menu a{animation:fabItem .35s var(--ease) both}
+.fab.open .fab-menu a:nth-of-type(2){animation-delay:.04s}
+.fab.open .fab-menu a:nth-of-type(3){animation-delay:.08s}
+@keyframes fabItem{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+@media (max-width:560px){.fab-btn{height:52px;font-size:14px}.fab-menu{min-width:0;width:calc(100vw - 32px)}}
+@media (prefers-reduced-motion:reduce){.fab-ic .wiper,.fab.open .fab-menu a{animation:none}.fab,.fab-menu{transition:none}}
