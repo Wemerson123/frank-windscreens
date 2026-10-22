@@ -119,6 +119,18 @@ img{display:block;max-width:100%}
 .map{margin-top:16px;border-radius:18px;overflow:hidden;border:1px solid var(--line);aspect-ratio:16/7;background:var(--bg-2)}
 .map iframe{width:100%;height:100%;border:0;filter:grayscale(1) invert(.92) contrast(.9)}
 
+/* tablet: five links + phone pill do not fit beside the centred logo below ~1080px */
+@media (min-width:861px) and (max-width:1080px){
+  .nav{grid-template-columns:auto 1fr auto}
+  .nav .logo{justify-self:center}
+  .nav-links{display:none}
+  .nav-links.open{display:flex;position:fixed;inset:76px auto auto 12px;min-width:260px;flex-direction:column;gap:0;background:#111317;border:1px solid var(--line);border-radius:16px;padding:8px}
+  .nav-links.open a{padding:14px 12px;font-size:16px}
+  .socials,.nav-div{display:none}
+  .burger{display:grid}
+}
+.nav-links a{white-space:nowrap}
+
 @media (max-width:860px){
   .nav{grid-template-columns:auto 1fr auto;padding:14px var(--gutter)}
   .nav .logo{justify-self:center}
