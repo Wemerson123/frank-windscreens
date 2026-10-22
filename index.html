@@ -19,18 +19,19 @@
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://frankwindscreens.com.au/assets/og-cover.jpg">
 <meta name="theme-color" content="#07080a">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="icon" href="favicon-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Anton&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="preload" as="image" href="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20261018_172559_b0014e8c-685a-4848-b845-a91743651e7f.png">
-<link rel="stylesheet" href="assets/site.css?v=3">
+<link rel="stylesheet" href="assets/site.css?v=4">
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"AutoRepair","name":"Frank Windscreens & Tint","telephone":"+61431185183",
- "address":{"@type":"PostalAddress","streetAddress":"209 Bunda Street","addressLocality":"Parramatta Park","addressRegion":"QLD","postalCode":"4870","addressCountry":"AU"},
- "areaServed":"Cairns","url":"https://frankwindscreens.com.au/","image":"https://frankwindscreens.com.au/assets/photos/shopfront.webp",
- "sameAs":["https://www.instagram.com/frank_windscreens_tint/","https://www.facebook.com/share/1Qfio9tNFG/"],
- "makesOffer":[{"@type":"Offer","itemOffered":{"@type":"Service","name":"Windscreen replacement"}},{"@type":"Offer","itemOffered":{"@type":"Service","name":"Stone chip repair"}},{"@type":"Offer","itemOffered":{"@type":"Service","name":"Window tinting"}},{"@type":"Offer","itemOffered":{"@type":"Service","name":"Side and rear window replacement"}}]}
+{"@context": "https://schema.org", "@graph": [{"@type": "AutoRepair", "name": "Frank Windscreens & Tint", "telephone": "+61431185183", "address": {"@type": "PostalAddress", "streetAddress": "209 Bunda Street", "addressLocality": "Parramatta Park", "addressRegion": "QLD", "postalCode": "4870", "addressCountry": "AU"}, "areaServed": {"@type": "City", "name": "Cairns"}, "url": "https://frankwindscreens.com.au/", "image": "https://frankwindscreens.com.au/assets/photos/shopfront.webp", "sameAs": ["https://www.instagram.com/frank_windscreens_tint/", "https://www.facebook.com/share/1Qfio9tNFG/"], "makesOffer": [{"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Windscreen replacement"}}, {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Stone chip repair"}}, {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Window tinting"}}, {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Side and rear window replacement"}}], "@id": "https://frankwindscreens.com.au/#business", "hasMap": "https://www.google.com/maps/search/?api=1&query=209+Bunda+Street+Parramatta+Park+QLD+4870", "logo": "https://frankwindscreens.com.au/apple-touch-icon.png", "description": "Windscreen replacement, stone chip repairs, side and rear windows and window tinting for all makes and models, at 209 Bunda Street, Parramatta Park, Cairns."}, {"@type": "WebSite", "@id": "https://frankwindscreens.com.au/#website", "url": "https://frankwindscreens.com.au/", "name": "Frank Windscreens & Tint", "publisher": {"@id": "https://frankwindscreens.com.au/#business"}}]}
 </script>
+<link rel="preload" href="assets/car.glb" as="fetch" crossorigin>
+<link rel="preload" href="assets/studio-1.webp" as="image">
+<link rel="modulepreload" href="https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js">
 <script type="importmap">
 {"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"}}
 </script>
@@ -60,8 +61,8 @@
 #stage{position:relative;height:420vh}
 .sticky{position:sticky;top:0;height:100vh;height:100svh;overflow:hidden;isolation:isolate}
 .bg{position:absolute;inset:0;background-size:cover;background-position:center}
-.bg1{background-image:url(https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20261018_172559_b0014e8c-685a-4848-b845-a91743651e7f.png)}
-.bg2{background-image:url(https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20261018_172559_28889147-787a-4567-8b27-5de3264916ab.png);opacity:0}
+.bg1{background-image:url(assets/studio-1.webp)}
+.bg2{background-image:url(assets/studio-2.webp);opacity:0}
 .wash{position:absolute;inset:0;pointer-events:none;background:
   radial-gradient(120% 80% at 50% 38%,rgba(7,8,10,0) 40%,rgba(7,8,10,.75) 100%),
   linear-gradient(to bottom,rgba(7,8,10,.35),rgba(7,8,10,0) 22%,rgba(7,8,10,0) 80%,rgba(7,8,10,.9))}
@@ -114,9 +115,9 @@
 .tile{flex:none;display:grid;place-items:center;width:calc(84 * var(--u));height:calc(84 * var(--u));border-radius:calc(20 * var(--u));
   border:1px solid rgba(255,255,255,.14);background:rgba(255,255,255,.04);transition:border-color .3s var(--ease)}
 .tile svg{width:40%;height:40%;fill:none;stroke:#fff;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
-.feat h3{font-family:var(--display);font-weight:400;text-transform:uppercase;font-size:calc(28.75 * var(--u));letter-spacing:.02em;line-height:1.05;color:#f4f5f7}
+.feat .ft{font-family:var(--display);font-weight:400;text-transform:uppercase;font-size:calc(28.75 * var(--u));letter-spacing:.02em;line-height:1.05;color:#f4f5f7}
 .feat p{margin-top:calc(6 * var(--u));font-size:calc(19.9 * var(--u));line-height:1.4;color:rgba(214,218,224,.66)}
-.feat:hover h3{color:#fff}
+.feat:hover .ft{color:#fff}
 .feat:hover .tile{border-color:var(--brand)}
 
 /* side */
@@ -171,7 +172,7 @@
   .chip span{display:none}
 }
 @media (prefers-reduced-motion:reduce){.cue i{animation:none}}
-html.intro #pHero .badge,html.intro #pHero .faces,html.intro #pHero h1 .ln span,html.intro #pHero .sub,html.intro #pHero .cta>*,html.intro .feat .tile,html.intro .feat h3,html.intro .feat p{opacity:0}
+html.intro #pHero .badge,html.intro #pHero .faces,html.intro #pHero h1 .ln span,html.intro #pHero .sub,html.intro #pHero .cta>*,html.intro .feat .tile,html.intro .feat .ft,html.intro .feat p{opacity:0}
 </style>
 </head>
 <body class="home">
@@ -199,17 +200,17 @@ html.intro #pHero .badge,html.intro #pHero .faces,html.intro #pHero h1 .ln span,
       <div class="glow" aria-hidden="true"></div>
       <div class="panel" id="pHero">
         <p class="badge"><svg viewBox="0 0 24 24"><path d="M12 3l7 3v5c0 4.6-3 8.4-7 10-4-1.6-7-5.4-7-10V6z"/><path d="M9 12l2 2 4-4"/></svg>Now open at 209 Bunda Street, Cairns</p>
-        <h1><span class="ln"><span>Clear glass.</span></span><span class="ln"><span>Sharp tint.</span></span></h1>
+        <h1><span class="ln"><span>Clear glass.</span></span><span class="ln"><span>Sharp tint.</span></span><span class="sr-only"> Windscreens, chip repairs and window tinting in Cairns</span></h1>
         <p class="sub">Windscreens, chip repairs, side windows and tint for every make and model, <br>fitted in our Parramatta Park workshop.</p>
         <div class="cta">
           <a class="pill" href="contact.html">Get a quote</a>
           <a class="go" href="contact.html" aria-label="Get a quote"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
         </div>
         <ul class="feats">
-          <li class="feat"><a href="windscreen-replacement.html"><span class="tile"><svg viewBox="0 0 24 24"><path d="M4 5h16l1.5 12Q12 20 2.5 17z"/></svg></span><span><h3>Windscreen replacement</h3><p>Cracked screens replaced on all makes and models.</p></span></a></li>
-          <li class="feat"><a href="chip-repair.html"><span class="tile"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 3v4M12 17v4M3 12h4M17 12h4"/></svg></span><span><h3>Stone chip repair</h3><p>Small chips filled before they turn into a crack.</p></span></a></li>
-          <li class="feat"><a href="window-tinting.html"><span class="tile"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 12h18"/></svg></span><span><h3>Window tinting</h3><p>Cut glare and heat in cars, utes and 4WDs.</p></span></a></li>
-          <li class="feat"><a href="side-rear-windows.html"><span class="tile"><svg viewBox="0 0 24 24"><path d="M5 4h10l4 5v11H5z"/><path d="M5 12h14"/></svg></span><span><h3>Side &amp; rear windows</h3><p>Door glass, quarter glass and rear screens.</p></span></a></li>
+          <li class="feat"><a href="windscreen-replacement.html"><span class="tile"><svg viewBox="0 0 24 24"><path d="M4 5h16l1.5 12Q12 20 2.5 17z"/></svg></span><span><p class="ft">Windscreen replacement</p><p>Cracked screens replaced on all makes and models.</p></span></a></li>
+          <li class="feat"><a href="chip-repair.html"><span class="tile"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 3v4M12 17v4M3 12h4M17 12h4"/></svg></span><span><p class="ft">Stone chip repair</p><p>Small chips filled before they turn into a crack.</p></span></a></li>
+          <li class="feat"><a href="window-tinting.html"><span class="tile"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 12h18"/></svg></span><span><p class="ft">Window tinting</p><p>Cut glare and heat in cars, utes and 4WDs.</p></span></a></li>
+          <li class="feat"><a href="side-rear-windows.html"><span class="tile"><svg viewBox="0 0 24 24"><path d="M5 4h10l4 5v11H5z"/><path d="M5 12h14"/></svg></span><span><p class="ft">Side &amp; rear windows</p><p>Door glass, quarter glass and rear screens.</p></span></a></li>
         </ul>
       </div>
 
@@ -239,7 +240,7 @@ html.intro #pHero .badge,html.intro #pHero .faces,html.intro #pHero h1 .ln span,
   </section>
   <section class="section meet" aria-labelledby="meet-title">
     <div class="split">
-      <img src="assets/photos/frank-portrait.webp" alt="Frank, owner of Frank Windscreens &amp; Tint" loading="lazy" style="object-position:50% 12%">
+      <img src="assets/photos/frank-portrait.webp" srcset="assets/photos/frank-portrait-640.webp 640w, assets/photos/frank-portrait.webp 1143w" sizes="(max-width:860px) 100vw, 50vw" alt="Frank, owner of Frank Windscreens &amp; Tint" loading="lazy" style="object-position:50% 12%">
       <div>
         <p class="eyebrow">Meet Frank</p>
         <h2 id="meet-title" style="margin-top:12px">The name on the sign<br>is the man on the job</h2>
@@ -263,24 +264,25 @@ html.intro #pHero .badge,html.intro #pHero .faces,html.intro #pHero h1 .ln span,
           <a class="btn btn--ghost" href="sms:0431185183">Text a photo</a>
         </div>
       </div>
-      <img src="assets/photos/shopfront.webp" alt="Frank Windscreens &amp; Tint shopfront on Bunda Street" loading="lazy">
+      <img src="assets/photos/shopfront.webp" srcset="assets/photos/shopfront-640.webp 640w, assets/photos/shopfront.webp 1086w" sizes="(max-width:860px) 100vw, 50vw" alt="Frank Windscreens &amp; Tint shopfront on Bunda Street" loading="lazy">
     </div>
   </section>
 </main>
 
 <footer class="foot" data-foot></footer>
-<script src="assets/site.js?v=3"></script>
+<script src="assets/site.js?v=4"></script>
 
 <script type="module">
 import * as THREE from 'three';
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
+import { MeshoptDecoder } from 'three/addons/libs/meshopt_decoder.module.js';
 import { RoomEnvironment } from 'three/addons/environments/RoomEnvironment.js';
 
 const Q = new URLSearchParams(location.search);
 const REDUCED = matchMedia('(prefers-reduced-motion: reduce)').matches;
 const MODEL = Q.get('model') === 'tripo'
   ? 'https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20261018_172544_35da5d62-b0db-48ff-8fd8-86c1e8012708.glb'
-  : 'https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20261018_172547_27158316-44cc-4848-a85b-5dac41faaa80.glb';
+  : 'assets/car.glb';
 const CAR_LEN = 4.6, FOV = 30;
 
 const clamp = (v, a = 0, b = 1) => Math.min(b, Math.max(a, v));
@@ -352,19 +354,27 @@ function entrance() {
   go(h.querySelector('.cta .pill'), [{ opacity: 0, transform: 'translateY(16px)' }, { opacity: 1, transform: 'none' }], 760);
   go(h.querySelector('.cta .go'), [{ opacity: 0, transform: 'translateX(-28px) scale(.8)' }, { opacity: 1, transform: 'none' }], 880);
   h.querySelectorAll('.feat').forEach((f, i) => {
-    const row = i % 2, base = 1000 + row * 180, kids = f.querySelectorAll('.tile, h3, p');
+    const row = i % 2, base = 1000 + row * 180, kids = f.querySelectorAll('.tile, p');
     kids.forEach((k, j) => go(k, [{ opacity: 0, transform: 'translateY(12px)' }, { opacity: 1, transform: 'none' }], base + j * 90, 800));
   });
 }
 let revealT0 = null;
-const finishLoader = (ms = 450) => setTimeout(() => { loaderEl.classList.add('done'); revealT0 = performance.now() + 550; setTimeout(entrance, 900); }, ms);
+let opened = false;
+const openDoor = () => {
+  if (opened) return; opened = true;
+  loaderEl.classList.add('done'); setTimeout(entrance, 900);
+  if (loaded) revealT0 = performance.now() + 550;   // otherwise the lights come up when the car arrives
+};
+const finishLoader = (ms = 450) => setTimeout(openDoor, ms);
+// slow connections: never hold the page behind the door for more than ~2s; the car joins when it lands
+setTimeout(openDoor, 2000);
 /* studio: the car turns to follow the visitor */
 const FINE = matchMedia('(pointer:fine)').matches;
 let mxT = 0, myT = 0, mx = 0, my = 0;
 addEventListener('pointermove', e => { mxT = e.clientX / innerWidth * 2 - 1; myT = e.clientY / innerHeight * 2 - 1; }, { passive: true });
 const sweep = new THREE.DirectionalLight(0xffffff, 0); sweep.position.set(0, 3, 8); scene.add(sweep);
 
-new GLTFLoader().load(MODEL, gltf => {
+new GLTFLoader().setMeshoptDecoder(MeshoptDecoder).load(MODEL, gltf => {
   const root = gltf.scene;
   root.traverse(o => {
     if (!o.isMesh) return;
@@ -399,7 +409,8 @@ new GLTFLoader().load(MODEL, gltf => {
   reflTilt.add(clone);
 
   loaded = true; buildKeys(); setupNozzles();
-  setLoad(100); finishLoader();
+  setLoad(100);
+  if (opened) revealT0 = performance.now() + 150; else finishLoader();
 }, e => {
   if (e.total) setLoad(Math.min(99, Math.round(e.loaded / e.total * 100)));
 }, () => { label.textContent = 'MODEL UNAVAILABLE'; finishLoader(900); });
