@@ -70,7 +70,7 @@
   setTimeout(function () { fab.classList.add('on'); }, document.body.classList.contains('home') ? 2600 : 300);
 
   /* analytics (GA4): loads only when an ID is set; tracks calls, texts, directions and quote taps */
-  var GA_ID = '';
+  var GA_ID = 'G-LN0RWZTGZS';
   var track = function () {};
   if (GA_ID && !/localhost|127\.0\.0\.1/.test(location.hostname)) {
     var gs = document.createElement('script'); gs.async = true; gs.src = 'https://www.googletagmanager.com/gtag/js?id=' + GA_ID;
