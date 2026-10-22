@@ -2,7 +2,7 @@
   var PHONE = '0431 185 183', TEL = '0431185183';
   var IG = 'https://www.instagram.com/frank_windscreens_tint/';
   var FB = 'https://www.facebook.com/share/1Qfio9tNFG/';
-  var MAPS = 'https://www.google.com/maps/search/?api=1&query=209+Bunda+Street+Parramatta+Park+QLD+4870';
+  var MAPS = 'https://www.google.com/maps/search/?api=1&query=209+Bunda+Street+Cairns+City+QLD+4870';
   var here = location.pathname.split('/').pop() || 'index.html';
   var links = [
     ['/windscreen-replacement.html', 'Windscreens'],
@@ -100,7 +100,7 @@
           '<p>Windscreens, stone chip repairs, side windows and window tinting in Cairns. All makes and models.</p>' +
           '<a class="foot-phone" href="tel:' + TEL + '">' + PHONE + '</a></div>' +
         '<div><p class="foot-h">Services</p><ul>' + links.slice(0, 4).map(function (l) { return '<li><a href="' + l[0] + '">' + l[1] + '</a></li>'; }).join('') + '</ul></div>' +
-        '<div><p class="foot-h">Workshop</p><ul><li><a href="' + MAPS + '" target="_blank" rel="noopener">209 Bunda Street<br>Parramatta Park QLD 4870</a></li><li>Next to Lifeline, opposite Cairns Central</li></ul></div>' +
+        '<div><p class="foot-h">Workshop</p><ul><li><a href="' + MAPS + '" target="_blank" rel="noopener">209 Bunda Street<br>Cairns City QLD 4870</a></li><li>Next to Lifeline, opposite Cairns Central</li></ul></div>' +
         '<div><p class="foot-h">Follow</p><ul><li><a href="' + IG + '" target="_blank" rel="noopener">Instagram</a></li><li><a href="' + FB + '" target="_blank" rel="noopener">Facebook</a></li><li><a href="https://www.google.com/maps?cid=11645218612399860823" target="_blank" rel="noopener">Google reviews</a></li><li><a href="/contact.html">Get a quote</a></li><li><a href="/privacy.html">Privacy</a></li></ul></div>' +
       '</div>' +
       '<div class="foot-base"><span>© 2026 Frank Windscreens &amp; Tint · Cairns, Queensland</span><span>Windscreens · Chip repairs · Tinting</span></div>';
