@@ -175,6 +175,48 @@
 }
 @media (prefers-reduced-motion:reduce){.cue i{animation:none}}
 html.intro #pHero .badge,html.intro #pHero .faces,html.intro #pHero h1 .ln span,html.intro #pHero .sub,html.intro #pHero .cta>*,html.intro .feat .tile,html.intro .feat .ft,html.intro .feat p{opacity:0}
+/* Meet Frank — editorial portrait */
+.meet{position:relative;overflow:hidden;padding:clamp(72px,10vw,150px) var(--gutter) clamp(64px,8vw,120px);isolation:isolate}
+.meet::before{content:"";position:absolute;inset:0;z-index:-2;background:radial-gradient(60% 55% at 28% 45%,rgba(255,255,255,.06),transparent 70%)}
+.meet-word{position:absolute;z-index:-1;left:max(var(--gutter),calc((100% - 1280px) / 2 + var(--gutter)));top:clamp(96px,10vw,160px);margin:0;white-space:nowrap;pointer-events:none;
+  font-family:var(--display);font-size:clamp(150px,19.5vw,300px);line-height:.8;letter-spacing:-.005em;color:transparent;-webkit-background-clip:text;background-clip:text;
+  background-image:linear-gradient(180deg,rgba(250,251,252,.36) 0%,rgba(170,177,188,.17) 45%,rgba(78,84,94,0) 92%)}
+.meet-in{max-width:1280px;margin:0 auto;display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);gap:clamp(32px,6vw,104px);align-items:end}
+.meet-fig{position:relative;margin:0}
+.meet-fig img{display:block;width:100%;aspect-ratio:1143/1376;object-fit:cover;object-position:50% 10%;mix-blend-mode:lighten;
+  -webkit-mask-image:radial-gradient(ellipse 58% 62% at 50% 36%,#000 62%,transparent 100%);mask-image:radial-gradient(ellipse 58% 62% at 50% 36%,#000 62%,transparent 100%)}
+.meet-fig figcaption{position:absolute;z-index:1;left:18%;bottom:7%;display:flex;flex-direction:column;gap:4px;padding-left:14px;border-left:2px solid var(--brand)}
+.meet-fig figcaption b{font-family:var(--display);font-weight:400;font-size:clamp(22px,2vw,30px);letter-spacing:.04em;text-transform:uppercase;line-height:1}
+.meet-fig figcaption span{font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted)}
+.meet-copy{padding-bottom:clamp(8px,4vw,64px)}
+.meet h2{margin-top:18px;font-family:var(--display);font-weight:400;text-transform:uppercase;font-size:clamp(36px,4.4vw,64px);line-height:.98;letter-spacing:.005em}
+.meet h2 em{font-style:normal;display:block;color:transparent;-webkit-background-clip:text;background-clip:text;
+  background-image:linear-gradient(180deg,rgb(250,251,252) 8%,rgb(214,218,224) 30%,rgb(170,177,188) 52%,rgb(122,129,140) 74%,rgb(78,84,94) 104%)}
+.meet-copy>p:not(.eyebrow){color:#c9cdd2;margin-top:18px;font-size:17px;max-width:34em}
+.meet-facts{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));margin:34px 0 0;border-top:1px solid rgba(255,255,255,.12);border-bottom:1px solid rgba(255,255,255,.12)}
+.meet-facts div{padding:18px 16px 18px 0}
+.meet-facts div+div{padding-left:18px;border-left:1px solid rgba(255,255,255,.12)}
+.meet-facts dt{font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--muted)}
+.meet-facts dd{margin:6px 0 0;font-weight:600;font-size:15px;line-height:1.35;color:var(--ink)}
+.meet-cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:30px}
+@supports (animation-timeline:view()){
+  @media (prefers-reduced-motion:no-preference){
+    .meet-word{animation:meetDrift linear both;animation-timeline:view();animation-range:entry 0% exit 100%}
+    @keyframes meetDrift{from{translate:-4% 0}to{translate:4% 0}}
+  }
+}
+@media (max-width:860px){
+  .meet-in{grid-template-columns:1fr;gap:8px}
+  .meet-word{top:12px;left:50%;transform:translateX(-50%);font-size:36vw}
+  .meet-fig{max-width:520px;margin:0 auto;width:100%}
+  .meet-fig figcaption{left:8%}
+  .meet-copy{padding-bottom:0}
+}
+@media (max-width:520px){
+  .meet-facts{grid-template-columns:1fr}
+  .meet-facts div,.meet-facts div+div{padding:14px 0;border-left:0}
+  .meet-facts div+div{border-top:1px solid rgba(255,255,255,.12)}
+}
 </style>
 </head>
 <body class="home">
@@ -240,15 +282,24 @@ html.intro #pHero .badge,html.intro #pHero .faces,html.intro #pHero h1 .ln span,
       <button class="cue" id="cue" type="button" aria-label="Scroll down">SCROLL<i></i></button>
     </div>
   </section>
-  <section class="section meet" aria-labelledby="meet-title">
-    <div class="split">
-      <img src="assets/photos/frank-portrait.webp" srcset="assets/photos/frank-portrait-640.webp 640w, assets/photos/frank-portrait.webp 1143w" sizes="(max-width:860px) 100vw, 50vw" alt="Frank, owner of Frank Windscreens &amp; Tint" loading="lazy" style="object-position:50% 12%">
-      <div>
+  <section class="meet" aria-labelledby="meet-title">
+    <p class="meet-word" aria-hidden="true">FRANK</p>
+    <div class="meet-in">
+      <figure class="meet-fig">
+        <img src="assets/photos/frank-portrait.webp" srcset="assets/photos/frank-portrait-640.webp 640w, assets/photos/frank-portrait.webp 1143w" sizes="(max-width:860px) 92vw, 46vw" alt="Frank, owner of Frank Windscreens &amp; Tint" loading="lazy">
+        <figcaption><b>Frank</b><span>Owner</span></figcaption>
+      </figure>
+      <div class="meet-copy">
         <p class="eyebrow">Meet Frank</p>
-        <h2 id="meet-title" style="margin-top:12px">The name on the sign<br>is the man on the job</h2>
+        <h2 id="meet-title">The name on the sign <em>is the man on the job.</em></h2>
         <p>Frank Windscreens &amp; Tint is Frank’s own workshop. Before opening on Bunda Street he ran Smithfield Windscreens, and the way he works came with him.</p>
         <p>He looks at the damage first, tells you straight whether it’s a repair or a replacement, and then does the job properly — windscreens, chips, side glass and tint, on every make and model.</p>
-        <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:26px">
+        <dl class="meet-facts">
+          <div><dt>Workshop</dt><dd>209 Bunda St, Cairns City</dd></div>
+          <div><dt>Vehicles</dt><dd>Every make &amp; model</dd></div>
+          <div><dt>Hours</dt><dd>Open 24/7</dd></div>
+        </dl>
+        <div class="meet-cta">
           <a class="btn" href="tel:0431185183">Call Frank</a>
           <a class="btn btn--ghost" href="sms:0431185183">Text a photo</a>
         </div>
